@@ -15,7 +15,7 @@ public class Exercises {
     }
 
     public int findMe(ArrayList<String> list, String target) {
-        if (list == null || hasNull(list)) {
+        if (list == null) {
             return -1;
         }
         for (int i = 0; i < list.length; i++) {
@@ -27,6 +27,24 @@ public class Exercises {
     }
 
     public int findMeFaster(ArrayList<Integer> list, int target) {
+        if (list == null) {
+            return -1;
+        }
+
+        int start = 0;
+        int end = list.size() - 1;
+        int middle = 0;
+        while (start <= end) {
+            middle = (start + end) / 2;
+
+            if (list.get(middle) < target) {
+                start = middle + 1;
+            } else if (list.get(middle) > target) {
+                end = middle - 1;
+            } else {
+                return middle;
+            }
+        }
 
         return -1;
     }
