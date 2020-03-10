@@ -50,6 +50,25 @@ public class Exercises {
     }
 
     public int findMeFaster(String[] list, String target) {
+        if (list == null) {
+            return -1;
+        }
+
+        int start = 0;
+        int end = list.size() - 1;
+        int middle = 0;
+        while (start <= end) {
+            middle = (start + end) / 2;
+
+            if (list.get(middle).compareTo(target) < 0) {
+                start = middle + 1;
+            } else if (list.get(middle).compareTo(target) > 0) {
+                end = middle - 1;
+            } else {
+                return middle;
+            }
+        }
+
         return -1;
     }
 
