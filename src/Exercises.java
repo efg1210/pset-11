@@ -114,7 +114,46 @@ public class Exercises {
         if (list == null) {
             return null;
         }
-        return null;
+        if (ascending) {
+            int lastIndex = list.size() - 1;
+            boolean swapped = true;
+            while (swapped) {
+                swapped = false;
+                for (int i = 0; i < lastIndex; i++) {
+                    if (list.get(i) == null) {
+                        list.add(list.remove(i));
+                    } else {
+                        if (list.get(i).compareTo(list.get(i + 1)) > 0) {
+                            String temp = list.get(i);
+                            list.set(i, list.get(i + 1));
+                            list.set(i + 1, temp);
+                            swapped = true;
+                        }
+                    }
+                }
+                lastIndex--;
+            }
+        } else {
+            int lastIndex = list.size() - 1;
+            boolean swapped = true;
+            while (swapped) {
+                swapped = false;
+                for (int i = 0; i < lastIndex; i++) {
+                    if (list.get(i) == null) {
+                        list.add(list.remove(i));
+                    } else {
+                        if (list.get(i).compareTo(list.get(i + 1)) < 0) {
+                            String temp = list.get(i);
+                            list.set(i, list.get(i + 1));
+                            list.set(i + 1, temp);
+                            swapped = true;
+                        }
+                    }
+                }
+                lastIndex--;
+            }
+        }
+        return list;
     }
 
     public ArrayList<Integer> insertion(ArrayList<Integer> list, boolean ascending) {
