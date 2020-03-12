@@ -77,10 +77,11 @@ public class Exercises {
             return null;
         }
         if (ascending) {
+            int lastIndex = list.length - 1;
             boolean swapped = true;
             while (swapped) {
                 swapped = false;
-                for (int i = 1; i < list.length - 1; i++) {
+                for (int i = 0; i < lastIndex; i++) {
                     if (list[i] > list[i + 1]) {
                         int temp = list[i];
                         list[i] = list[i + 1];
@@ -88,12 +89,14 @@ public class Exercises {
                         swapped = true;
                     }
                 }
+                lastIndex--;
             }
         } else {
+            int lastIndex = list.length - 1;
             boolean swapped = true;
             while (swapped) {
                 swapped = false;
-                for (int i = 1; i < list.length - 1; i++) {
+                for (int i = 0; i < lastIndex; i++) {
                     if (list[i] < list[i + 1]) {
                         int temp = list[i];
                         list[i] = list[i + 1];
@@ -101,7 +104,8 @@ public class Exercises {
                         swapped = true;
                     }
                 }
-            } 
+                lastIndex--;
+            }
         }
         return list;
     }
@@ -110,42 +114,49 @@ public class Exercises {
         if (list == null) {
             return null;
         }
+        return null;
     }
 
     public ArrayList<Integer> insertion(ArrayList<Integer> list, boolean ascending) {
         if (list == null) {
             return null;
         }
+        return null;
     }
 
     public String[] insertion(String[] list, boolean ascending) {
         if (list == null) {
             return null;
         }
+        return null;
     }
 
     public int[] selection(int[] list, boolean ascending) {
         if (list == null) {
             return null;
         }
+        return null;
     }
 
     public ArrayList<String> selection(ArrayList<String> list, boolean ascending) {
         if (list == null) {
             return null;
         }
+        return null;
     }
 
     public ArrayList<Integer> merge(ArrayList<Integer> list, boolean ascending) {
         if (list == null) {
             return null;
         }
+        return null;
     }
 
     public String[] merge(String[] list, boolean ascending) {
         if (list == null) {
             return null;
         }
+        return null;
     }
 
     private boolean hasNull(String[] strings) {
