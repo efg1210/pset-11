@@ -192,7 +192,32 @@ public class Exercises {
         if (list == null) {
             return null;
         }
-        return null;
+        if (ascending) {
+            int i = 0; 
+            while (i < list.length) {
+                int j = i;
+                while (j > 0 && list[j - 1].compareTo(list[j]) > 0) {
+                    String temp = list[j - 1];
+                    list[j - 1] = list[j];
+                    list[j] = temp;
+                    j--;
+                }
+                i++;
+            }
+        } else {
+            int i = 0; 
+            while (i < list.length) {
+                int j = i;
+                while (j > 0 && list[j - 1].compareTo(list[j]) < 0) {
+                    String temp = list[j - 1];
+                    list[j - 1] = list[j];
+                    list[j] = temp;
+                    j--;
+                }
+                i++;
+            }
+        }
+        return list;
     }
 
     public int[] selection(int[] list, boolean ascending) {
