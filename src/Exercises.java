@@ -160,7 +160,32 @@ public class Exercises {
         if (list == null) {
             return null;
         }
-        return null;
+        if (ascending) {
+            int i = 0; 
+            while (i < list.size()) {
+                int j = i;
+                while (j > 0 && list.get(j - 1) > list.get(j)) {
+                    int temp = list.get(j - 1);
+                    list.set((j - 1), list.get(j));
+                    list.set(j , temp);
+                    j--;
+                }
+                i++;
+            }
+        } else {
+            int i = 0; 
+            while (i < list.size()) {
+                int j = i;
+                while (j > 0 && list.get(j - 1) < list.get(j)) {
+                    int temp = list.get(j - 1);
+                    list.set((j - 1), list.get(j));
+                    list.set(j , temp);
+                    j--;
+                }
+                i++;
+            }
+        }
+        return list;
     }
 
     public String[] insertion(String[] list, boolean ascending) {
