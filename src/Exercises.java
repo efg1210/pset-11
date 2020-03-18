@@ -26,6 +26,7 @@ public class Exercises {
         return -1;
     }
 
+    //TODO: doesn't work
     public int findMeFaster(ArrayList<Integer> list, int target) {
         if (list == null) {
             return -1;

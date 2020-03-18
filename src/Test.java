@@ -4,12 +4,16 @@ public class Test {
     public static void main (String[] args) {
         Exercises e = new Exercises();
         //int[] list = (new int[]{6, 2, 7, 2, 9, 2, 10, 5987, -1});
-        // ArrayList<String> list = new ArrayList();
-        // list.add("e");
-        // list.add("b");
-        // list.add("a");
-        // list.add("c");
-        // ArrayList<String> list2 = e.bubble(list, true);
+        ArrayList<Integer> list = new ArrayList();
+        list.add(5);
+        list.add(2);
+        list.add(1);
+        list.add(null);
+        list.add(3);
+
+        System.out.println(e.findMeFaster(list, 1));
+
+        // ArrayList<String> list2 = e.findMeFaster(list, false);
         
         // for (String each: list2) {
         //     System.out.print(each + ", ");
