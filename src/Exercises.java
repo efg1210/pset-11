@@ -175,7 +175,7 @@ public class Exercises {
         }
 
         int nullCounter = 0;
-        for (String each: list) {
+        for (Integer each: list) {
             if (each == null) {
                 nullCounter++;
             }
@@ -341,7 +341,7 @@ public class Exercises {
         }
 
         int nullCounter = 0;
-        for (String each: list) {
+        for (Integer each: list) {
             if (each == null) {
                 nullCounter++;
             }
