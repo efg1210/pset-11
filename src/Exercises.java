@@ -226,7 +226,7 @@ public class Exercises {
         }
         if (ascending) {
             int i = 0;
-            int end = list.length - 1;
+            int end = list.length;
             while (i < end) {
                 int minIndex = i;
                 for (int j = i; j < end; j++) {
@@ -262,7 +262,38 @@ public class Exercises {
         if (list == null) {
             return null;
         }
-        return null;
+        if (ascending) {
+            int i = 0;
+            int end = list.size();
+            while (i < end) {
+                int minIndex = i;
+                for (int j = i; j < end; j++) {
+                    if (list.get(minIndex).compareTo(list.get(j)) > 0) {
+                        minIndex = j;
+                    }
+                }
+                String temp = list.get(minIndex);
+                list.set(minIndex, list.get(i));
+                list.set(i, temp);
+                i++;
+            }
+        } else {
+            int i = 0;
+            int end = list.size();
+            while (i < end) {
+                int minIndex = i;
+                for (int j = i; j < end; j++) {
+                    if (list.get(minIndex).compareTo(list.get(j)) < 0) {
+                        minIndex = j;
+                    }
+                }
+                String temp = list.get(minIndex);
+                list.set(minIndex, list.get(i));
+                list.set(i, temp);
+                i++;
+            }
+        }
+        return list;
     }
 
     public ArrayList<Integer> merge(ArrayList<Integer> list, boolean ascending) {
