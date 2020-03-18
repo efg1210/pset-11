@@ -9,9 +9,9 @@ public class Test {
         list.add("b");
         list.add("a");
         list.add("c");
-        e.selection(list, false);
+        ArrayList<String> list2 = e.bubble(list, true);
         
-        for (String each: list) {
+        for (String each: list2) {
             System.out.print(each + ", ");
         }
     }
