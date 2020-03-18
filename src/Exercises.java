@@ -173,6 +173,14 @@ public class Exercises {
         if (list == null) {
             return null;
         }
+
+        int nullCounter = 0;
+        for (String each: list) {
+            if (each == null) {
+                nullCounter++;
+            }
+        }
+
         if (ascending) {
             int i = 0; 
             while (i < list.size()) {
@@ -198,6 +206,11 @@ public class Exercises {
                 i++;
             }
         }
+
+        for (int i = 0; i < nullCounter; i++) {
+            list.add(null);
+        }
+
         return list;
     }
 
@@ -275,6 +288,14 @@ public class Exercises {
         if (list == null) {
             return null;
         }
+
+        int nullCounter = 0;
+        for (String each: list) {
+            if (each == null) {
+                nullCounter++;
+            }
+        }
+
         if (ascending) {
             int i = 0;
             int end = list.size();
@@ -306,6 +327,11 @@ public class Exercises {
                 i++;
             }
         }
+
+        for (int i = 0; i < nullCounter; i++) {
+            list.add(null);
+        }
+
         return list;
     }
 
