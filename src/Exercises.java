@@ -339,6 +339,18 @@ public class Exercises {
         if (list == null) {
             return null;
         }
+
+        int nullCounter = 0;
+        for (String each: list) {
+            if (each == null) {
+                nullCounter++;
+            }
+        }
+
+        for (int i = 0; i < nullCounter; i++) {
+            list.add(null);
+        }
+
         return null;
     }
 
