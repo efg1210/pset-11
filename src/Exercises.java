@@ -114,6 +114,14 @@ public class Exercises {
         if (list == null) {
             return null;
         }
+
+        int nullCounter = 0;
+        for (String each: list) {
+            if (each == null) {
+                nullCounter++;
+            }
+        }
+
         if (ascending) {
             int lastIndex = list.size() - 1;
             boolean swapped = true;
@@ -153,6 +161,11 @@ public class Exercises {
                 lastIndex--;
             }
         }
+
+        for (int i = 0; i < nullCounter; i++) {
+            list.add(null);
+        }
+
         return list;
     }
 
