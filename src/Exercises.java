@@ -26,7 +26,6 @@ public class Exercises {
         return -1;
     }
 
-    //TODO: doesn't work
     public int findMeFaster(ArrayList<Integer> list, int target) {
         if (list == null) {
             return -1;
@@ -341,18 +340,38 @@ public class Exercises {
             return null;
         }
 
-        int nullCounter = 0;
-        for (Integer each: list) {
-            if (each == null) {
-                nullCounter++;
+        if (list.size() == 1) {
+            return list;
+        }
+
+        ArrayList<Integer> firstList = new ArrayList<Integer>();
+        ArrayList<Integer> secondList = new ArrayList<Integer>();
+
+        for (int i = 0; i < list.size()/2; i++) {
+            firstList.add(list.get(i));
+        }
+        for (int i = list.size()/2; i < list.size(); i++) {
+            secondList.add(list.get(i));
+        }
+
+        return combine(merge(firstList, ascending), merge(secondList, ascending), ascending);
+    }
+
+    public ArrayList<Integer> combine(ArrayList<Integer> firstList, ArrayList<Integer> secondList, boolean ascending) {
+        ArrayList<Integer> combination = new ArrayList<Integer>();
+        int firstLocation = 0;
+        int secondLocation = 0;
+      
+        while (firstLocation < firstList.size() && secondLocation < secondList.size()) {
+            if (firstList.get(firstLocation) < secondList.get(secondLocation)) {
+                combination.add(firstList.get(firstLocation));
+                firstLocation++;
+            } else {
+                combination.add(secondList.get(secondLocation));
+                secondLocation++;
             }
         }
-
-        for (int i = 0; i < nullCounter; i++) {
-            list.add(null);
-        }
-
-        return null;
+        return combination;
     }
 
     public String[] merge(String[] list, boolean ascending) {
