@@ -13,7 +13,7 @@ public class Test {
 
         //System.out.println(e.merge(list, 1));
 
-        ArrayList<Integer> list2 = e.merge(list, true);
+        ArrayList<Integer> list2 = e.merge(list, false);
         
         for (Integer each: list2) {
             System.out.print(each + ", ");

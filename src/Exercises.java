@@ -116,25 +116,28 @@ public class Exercises {
         }
 
         int nullCounter = 0;
-        for (String each: list) {
-            if (each == null) {
+        ArrayList<String> goodList = new ArrayList<String>();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == null) {
                 nullCounter++;
+            } else {
+                goodList.add(list.get(i));
             }
         }
 
         if (ascending) {
-            int lastIndex = list.size() - 1;
+            int lastIndex = goodList.size() - 1;
             boolean swapped = true;
             while (swapped) {
                 swapped = false;
                 for (int i = 0; i < lastIndex; i++) {
-                    if (list.get(i) == null) {
-                        list.add(list.remove(i));
+                    if (goodList.get(i) == null) {
+                        goodList.add(goodList.remove(i));
                     } else {
-                        if (list.get(i).compareTo(list.get(i + 1)) > 0) {
-                            String temp = list.get(i);
-                            list.set(i, list.get(i + 1));
-                            list.set(i + 1, temp);
+                        if (goodList.get(i).compareTo(goodList.get(i + 1)) > 0) {
+                            String temp = goodList.get(i);
+                            goodList.set(i, goodList.get(i + 1));
+                            goodList.set(i + 1, temp);
                             swapped = true;
                         }
                     }
@@ -142,18 +145,18 @@ public class Exercises {
                 lastIndex--;
             }
         } else {
-            int lastIndex = list.size() - 1;
+            int lastIndex = goodList.size() - 1;
             boolean swapped = true;
             while (swapped) {
                 swapped = false;
                 for (int i = 0; i < lastIndex; i++) {
-                    if (list.get(i) == null) {
-                        list.add(list.remove(i));
+                    if (goodList.get(i) == null) {
+                        goodList.add(goodList.remove(i));
                     } else {
-                        if (list.get(i).compareTo(list.get(i + 1)) < 0) {
-                            String temp = list.get(i);
-                            list.set(i, list.get(i + 1));
-                            list.set(i + 1, temp);
+                        if (goodList.get(i).compareTo(goodList.get(i + 1)) < 0) {
+                            String temp = goodList.get(i);
+                            goodList.set(i, goodList.get(i + 1));
+                            goodList.set(i + 1, temp);
                             swapped = true;
                         }
                     }
@@ -163,10 +166,10 @@ public class Exercises {
         }
 
         for (int i = 0; i < nullCounter; i++) {
-            list.add(null);
+            goodList.add(null);
         }
 
-        return list;
+        return goodList;
     }
 
     public ArrayList<Integer> insertion(ArrayList<Integer> list, boolean ascending) {
@@ -176,7 +179,6 @@ public class Exercises {
 
         int nullCounter = 0;
         ArrayList<Integer> goodList = new ArrayList<Integer>();
-
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) == null) {
                 nullCounter++;
@@ -294,49 +296,52 @@ public class Exercises {
         }
 
         int nullCounter = 0;
-        for (String each: list) {
-            if (each == null) {
+        ArrayList<String> goodList = new ArrayList<String>();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == null) {
                 nullCounter++;
+            } else {
+                goodList.add(list.get(i));
             }
         }
 
         if (ascending) {
             int i = 0;
-            int end = list.size();
+            int end = goodList.size();
             while (i < end) {
                 int minIndex = i;
                 for (int j = i; j < end; j++) {
-                    if (list.get(minIndex).compareTo(list.get(j)) > 0) {
+                    if (goodList.get(minIndex).compareTo(goodList.get(j)) > 0) {
                         minIndex = j;
                     }
                 }
-                String temp = list.get(minIndex);
-                list.set(minIndex, list.get(i));
-                list.set(i, temp);
+                String temp = goodList.get(minIndex);
+                goodList.set(minIndex, goodList.get(i));
+                goodList.set(i, temp);
                 i++;
             }
         } else {
             int i = 0;
-            int end = list.size();
+            int end = goodList.size();
             while (i < end) {
                 int minIndex = i;
                 for (int j = i; j < end; j++) {
-                    if (list.get(minIndex).compareTo(list.get(j)) < 0) {
+                    if (goodList.get(minIndex).compareTo(goodList.get(j)) < 0) {
                         minIndex = j;
                     }
                 }
-                String temp = list.get(minIndex);
-                list.set(minIndex, list.get(i));
-                list.set(i, temp);
+                String temp = goodList.get(minIndex);
+                goodList.set(minIndex, goodList.get(i));
+                goodList.set(i, temp);
                 i++;
             }
         }
 
         for (int i = 0; i < nullCounter; i++) {
-            list.add(null);
+            goodList.add(null);
         }
 
-        return list;
+        return goodList;
     }
 
     public ArrayList<Integer> merge(ArrayList<Integer> list, boolean ascending) {        
@@ -350,7 +355,6 @@ public class Exercises {
 
         int nullCounter = 0;
         ArrayList<Integer> goodList = new ArrayList<Integer>();
-
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) == null) {
                 nullCounter++;
@@ -361,8 +365,6 @@ public class Exercises {
 
         ArrayList<Integer> firstList = new ArrayList<Integer>();
         ArrayList<Integer> secondList = new ArrayList<Integer>();
-
-        //System.out.println("list size: " + list.size());
 
         for (int i = 0; i < (goodList.size()/2); i++) {
             firstList.add(goodList.get(i));
@@ -386,16 +388,22 @@ public class Exercises {
         int secondLocation = 0;
       
         while (firstLocation < firstList.size() && secondLocation < secondList.size()) {
-            
-            // System.out.println("firstList.get(firstLocation): " + firstList.get(firstLocation));
-            // System.out.println("secondList.get(secondLocation): " + secondList.get(secondLocation));
-            
-            if (firstList.get(firstLocation) < secondList.get(secondLocation)) {
-                combination.add(firstList.get(firstLocation));
-                firstLocation++;
+            if (ascending) {
+                if (firstList.get(firstLocation) < secondList.get(secondLocation)) {
+                    combination.add(firstList.get(firstLocation));
+                    firstLocation++;
+                } else {
+                    combination.add(secondList.get(secondLocation));
+                    secondLocation++;
+                }
             } else {
-                combination.add(secondList.get(secondLocation));
-                secondLocation++;
+                if (firstList.get(firstLocation) > secondList.get(secondLocation)) {
+                    combination.add(firstList.get(firstLocation));
+                    firstLocation++;
+                } else {
+                    combination.add(secondList.get(secondLocation));
+                    secondLocation++;
+                }
             }
         }
 
@@ -406,9 +414,6 @@ public class Exercises {
         if (secondLocation == secondList.size()) {
             combination.add(firstList.get(firstLocation));
         }
-
-        // System.out.println("add: " + (firstList.size() + secondList.size()));
-        // System.out.println("actual: " + combination.size());
 
         return combination;
     }
