@@ -339,7 +339,7 @@ public class Exercises {
         return list;
     }
 
-    public ArrayList<Integer> merge(ArrayList<Integer> list, boolean ascending) {
+    public ArrayList<Integer> merge(ArrayList<Integer> list, boolean ascending) {        
         if (list == null) {
             return null;
         }
@@ -349,29 +349,35 @@ public class Exercises {
         }
 
         int nullCounter = 0;
-        for (Integer each: list) {
-            if (each == null) {
+        ArrayList<Integer> goodList = new ArrayList<Integer>();
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == null) {
                 nullCounter++;
+            } else {
+                goodList.add(list.get(i));
             }
         }
 
         ArrayList<Integer> firstList = new ArrayList<Integer>();
         ArrayList<Integer> secondList = new ArrayList<Integer>();
 
-        System.out.println("list size: " + list.size());
+        //System.out.println("list size: " + list.size());
 
-        for (int i = 0; i < (list.size()/2); i++) {
-            firstList.add(list.get(i));
+        for (int i = 0; i < (goodList.size()/2); i++) {
+            firstList.add(goodList.get(i));
         }
-        for (int i = (list.size()/2); i < list.size(); i++) {
-            secondList.add(list.get(i));
+        for (int i = (goodList.size()/2); i < goodList.size(); i++) {
+            secondList.add(goodList.get(i));
         }
+
+        ArrayList<Integer> combined = combine(merge(firstList, ascending), merge(secondList, ascending), ascending);
 
         for (int i = 0; i < nullCounter; i++) {
-            list.add(null);
+            combined.add(null);
         }
-
-        return combine(merge(firstList, ascending), merge(secondList, ascending), ascending);
+        
+        return combined;
     }
 
     public ArrayList<Integer> combine(ArrayList<Integer> firstList, ArrayList<Integer> secondList, boolean ascending) {
