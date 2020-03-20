@@ -11,12 +11,12 @@ public class Test {
         list.add(null);
         list.add(3);
 
-        System.out.println(e.findMeFaster(list, 1));
+        //System.out.println(e.merge(list, 1));
 
-        // ArrayList<String> list2 = e.findMeFaster(list, false);
+        ArrayList<Integer> list2 = e.insertion(list, true);
         
-        // for (String each: list2) {
-        //     System.out.print(each + ", ");
-        // }
+        for (Integer each: list2) {
+            System.out.print(each + ", ");
+        }
     }
 }

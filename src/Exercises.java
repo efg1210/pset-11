@@ -175,32 +175,36 @@ public class Exercises {
         }
 
         int nullCounter = 0;
-        for (Integer each: list) {
-            if (each == null) {
+        ArrayList<Integer> goodList = new ArrayList<Integer>();
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == null) {
                 nullCounter++;
+            } else {
+                goodList.add(list.get(i));
             }
         }
 
         if (ascending) {
             int i = 0; 
-            while (i < list.size()) {
+            while (i < goodList.size()) {
                 int j = i;
-                while (j > 0 && list.get(j - 1) > list.get(j)) {
-                    int temp = list.get(j - 1);
-                    list.set((j - 1), list.get(j));
-                    list.set(j , temp);
+                while (j > 0 && goodList.get(j - 1) > goodList.get(j)) {
+                    int temp = goodList.get(j - 1);
+                    goodList.set((j - 1), goodList.get(j));
+                    goodList.set(j , temp);
                     j--;
                 }
                 i++;
             }
         } else {
             int i = 0; 
-            while (i < list.size()) {
+            while (i < goodList.size()) {
                 int j = i;
-                while (j > 0 && list.get(j - 1) < list.get(j)) {
-                    int temp = list.get(j - 1);
-                    list.set((j - 1), list.get(j));
-                    list.set(j , temp);
+                while (j > 0 && goodList.get(j - 1) < goodList.get(j)) {
+                    int temp = goodList.get(j - 1);
+                    goodList.set((j - 1), goodList.get(j));
+                    goodList.set(j , temp);
                     j--;
                 }
                 i++;
@@ -208,10 +212,10 @@ public class Exercises {
         }
 
         for (int i = 0; i < nullCounter; i++) {
-            list.add(null);
+            goodList.add(null);
         }
 
-        return list;
+        return goodList;
     }
 
     public String[] insertion(String[] list, boolean ascending) {
@@ -344,14 +348,27 @@ public class Exercises {
             return list;
         }
 
+        int nullCounter = 0;
+        for (Integer each: list) {
+            if (each == null) {
+                nullCounter++;
+            }
+        }
+
         ArrayList<Integer> firstList = new ArrayList<Integer>();
         ArrayList<Integer> secondList = new ArrayList<Integer>();
 
-        for (int i = 0; i < list.size()/2; i++) {
+        System.out.println("list size: " + list.size());
+
+        for (int i = 0; i < (list.size()/2); i++) {
             firstList.add(list.get(i));
         }
-        for (int i = list.size()/2; i < list.size(); i++) {
+        for (int i = (list.size()/2); i < list.size(); i++) {
             secondList.add(list.get(i));
+        }
+
+        for (int i = 0; i < nullCounter; i++) {
+            list.add(null);
         }
 
         return combine(merge(firstList, ascending), merge(secondList, ascending), ascending);
@@ -363,6 +380,10 @@ public class Exercises {
         int secondLocation = 0;
       
         while (firstLocation < firstList.size() && secondLocation < secondList.size()) {
+            
+            // System.out.println("firstList.get(firstLocation): " + firstList.get(firstLocation));
+            // System.out.println("secondList.get(secondLocation): " + secondList.get(secondLocation));
+            
             if (firstList.get(firstLocation) < secondList.get(secondLocation)) {
                 combination.add(firstList.get(firstLocation));
                 firstLocation++;
@@ -371,6 +392,18 @@ public class Exercises {
                 secondLocation++;
             }
         }
+
+        if (firstLocation == firstList.size()) {
+            combination.add(secondList.get(secondLocation));
+        }
+
+        if (secondLocation == secondList.size()) {
+            combination.add(firstList.get(firstLocation));
+        }
+
+        // System.out.println("add: " + (firstList.size() + secondList.size()));
+        // System.out.println("actual: " + combination.size());
+
         return combination;
     }
 
