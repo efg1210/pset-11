@@ -439,10 +439,6 @@ public class Exercises {
             secondList[i] = list[i + (list.length/2)];
         }
 
-        System.out.println("list.length: " + list.length);
-        System.out.println("firstList.length: " + firstList.length);
-        System.out.println("secondList.length: " + secondList.length);
-
         String[] combined = combine(merge(firstList, ascending), merge(secondList, ascending), ascending);
         return combined;
     }
@@ -452,10 +448,6 @@ public class Exercises {
         int firstLocation = 0;
         int secondLocation = 0;
         int combineLocation = 0;
-
-        System.out.println("firstLocation: " + firstLocation);
-        System.out.println("secondLocation: " + secondLocation);
-        System.out.println("combineLocation: " + combineLocation);
       
         while (firstLocation < firstList.length && secondLocation < secondList.length) {
             if (ascending) {
