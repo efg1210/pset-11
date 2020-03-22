@@ -6,11 +6,11 @@ public class Test {
         
         String[] test = new String[] {"b", "a", "e", "c", "z", "d"};
 
-        test = e.merge(test, true);
+        System.out.println("answer: " + e.findMeFaster(test, "d"));
         
         // System.out.println("test size: " + test.size());
-        for (String each: test) {
-            System.out.print(each + ", ");
-        }
+        // for (String each: test) {
+        //     System.out.print(each + ", ");
+        // }
     }
 }

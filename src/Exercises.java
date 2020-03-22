@@ -58,7 +58,7 @@ public class Exercises {
         int end = list.length - 1;
         int middle = 0;
         while (start <= end) {
-            middle = (start + end) / 2;
+            middle = ((start + end) / 2);
 
             if (list[middle].compareTo(target) < 0) {
                 start = middle + 1;
