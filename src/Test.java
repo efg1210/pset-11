@@ -1,21 +1,15 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Test {
     public static void main (String[] args) {
         Exercises e = new Exercises();
-        //int[] list = (new int[]{6, 2, 7, 2, 9, 2, 10, 5987, -1});
-        ArrayList<Integer> list = new ArrayList();
-        list.add(5);
-        list.add(2);
-        list.add(1);
-        list.add(null);
-        list.add(3);
-
-        //System.out.println(e.merge(list, 1));
-
-        ArrayList<Integer> list2 = e.merge(list, false);
         
-        for (Integer each: list2) {
+        String[] test = new String[] {"b", "a", "e", "c", "z", "d"};
+
+        test = e.merge(test, true);
+        
+        // System.out.println("test size: " + test.size());
+        for (String each: test) {
             System.out.print(each + ", ");
         }
     }

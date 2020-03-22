@@ -405,14 +405,16 @@ public class Exercises {
                     secondLocation++;
                 }
             }
-        }
+        }        
 
-        if (firstLocation == firstList.size()) {
+        while (firstLocation == firstList.size() && secondLocation != secondList.size()) {
             combination.add(secondList.get(secondLocation));
+            secondLocation++;
         }
 
-        if (secondLocation == secondList.size()) {
+        while (secondLocation == secondList.size() && firstLocation != firstList.size()) {
             combination.add(firstList.get(firstLocation));
+            firstLocation++;
         }
 
         return combination;
@@ -422,15 +424,75 @@ public class Exercises {
         if (list == null) {
             return null;
         }
-        return null;
+
+        if (list.length == 1) {
+            return list;
+        }
+
+        String[] firstList = new String[list.length/2];
+        String[] secondList = new String[(list.length - (list.length/2))];
+
+        for (int i = 0; i < (list.length/2); i++) {
+            firstList[i] = list[i];
+        }
+        for (int i = 0; i < secondList.length; i++) {
+            secondList[i] = list[i + (list.length/2)];
+        }
+
+        System.out.println("list.length: " + list.length);
+        System.out.println("firstList.length: " + firstList.length);
+        System.out.println("secondList.length: " + secondList.length);
+
+        String[] combined = combine(merge(firstList, ascending), merge(secondList, ascending), ascending);
+        return combined;
     }
 
-    private boolean hasNull(String[] strings) {
-        for (String string: strings) {
-            if (string == null) {
-                return true;
+    public String[] combine(String[] firstList, String[] secondList, boolean ascending) {
+        String[] combination = new String[firstList.length + secondList.length];
+        int firstLocation = 0;
+        int secondLocation = 0;
+        int combineLocation = 0;
+
+        System.out.println("firstLocation: " + firstLocation);
+        System.out.println("secondLocation: " + secondLocation);
+        System.out.println("combineLocation: " + combineLocation);
+      
+        while (firstLocation < firstList.length && secondLocation < secondList.length) {
+            if (ascending) {
+                if (firstList[firstLocation].compareTo(secondList[secondLocation]) < 0) {
+                    combination[combineLocation] = firstList[firstLocation];
+                    firstLocation++;
+                    combineLocation++;
+                } else {
+                    combination[combineLocation] = secondList[secondLocation];
+                    secondLocation++;
+                    combineLocation++;
+                }
+            } else {
+                if (firstList[firstLocation].compareTo(secondList[secondLocation]) > 0) {
+                    combination[combineLocation] = firstList[firstLocation];
+                    firstLocation++;
+                    combineLocation++;
+                } else {
+                    combination[combineLocation] = secondList[secondLocation];
+                    secondLocation++;
+                    combineLocation++;
+                }
             }
+        }        
+
+        while (firstLocation == firstList.length && secondLocation != secondList.length) {
+            combination[combineLocation] = secondList[secondLocation];
+            secondLocation++;
+            combineLocation++;
         }
-        return false;
+
+        while (secondLocation == secondList.length && firstLocation != firstList.length) {
+            combination[combineLocation] = firstList[firstLocation];
+            firstLocation++;
+            combineLocation++;
+        }
+
+        return combination;
     }
 }
